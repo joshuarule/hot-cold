@@ -1,0 +1,85 @@
+
+
+  
+// font 
+
+@mixin font-main{
+  font-family: 'Montserrat', sans-serif;
+}
+
+$base-font-size: 16px;
+
+// colors
+
+$hot-color: #ffd500;
+$cold-color: #03bce1;
+
+
+@import 'helpers';
+@import 'reset';
+
+// base
+
+html {
+  font-size: $base-font-size;
+}
+
+body {
+  @include font-main;
+}
+
+h1 {
+  font-size: em(140px);
+  margin: 0;
+}
+
+// layout
+
+.container {
+  text-align: center;
+  margin: 0 auto;
+  max-width: em(600px);
+  
+}
+
+.scale {
+  height: 200px;
+  max-width: 600px; 
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+  @include o;
+}
+
+.hot, .cold {
+  line-height: 100px;
+  transition: all 0.7s ease-in-out;
+}
+
+
+// elements
+
+.hot {
+  color: rgba($hot-color, .05);
+}
+
+.cold {
+  color: rgba($cold-color, .05);;
+}
+
+// spits out classes for multiple shadows
+
+$shadow-distance: 60px;
+
+@for $i from 1 through 5 {
+  .hot-#{$i} {
+    text-shadow: multiple-text-shadow($i, $hot-color, -$shadow-distance, -10);
+  }
+  .cold-#{$i} {
+    text-shadow: multiple-text-shadow($i, $cold-color, $shadow-distance, 10);
+  }
+}

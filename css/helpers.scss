@@ -1,0 +1,20 @@
+@function em($px, $base: $base-font-size) {
+    @return ($px / $base) * 1em;
+}
+
+@mixin o($color: black) {
+  .outline & {
+    outline: 1px solid $color;
+  } 
+}
+
+// creates mulitple text shadows
+
+@function multiple-text-shadow ($n, $color, $distance, $hue-adjust) {
+  $value: '0 ' + $distance + ' 0 ' + rgba($color, .2);
+  @for $i from 2 through $n {
+    $value: '#{$value} , 0 #{$i * $distance} 0 ' + adjust-hue(rgba($color, ($i*.2)), ($i * $hue-adjust));
+  }
+  @return unquote($value);
+}
+
