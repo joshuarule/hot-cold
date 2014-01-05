@@ -1,4 +1,4 @@
-.hide {display: none;}
+
 
 .float-left {float: left;}
 
@@ -188,11 +188,14 @@ button {
 }
 
 .slide {
+  display: none;
   position: absolute;
   left: 0;
   right: 0;
   margin: auto 0;
 }
+
+.js-show {display: block;}
 
 // elements
 
@@ -206,7 +209,7 @@ button {
 
 // spits out classes for multiple shadows
 
-$shadow-distance: 50px;
+$shadow-distance: 52px;
 
 @for $i from 1 through 5 {
   .hot-#{$i} {
