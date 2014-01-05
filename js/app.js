@@ -1,103 +1,122 @@
 $(document).ready(function(){
 
-  // Generates Random Number
+// initialize
+
+// Generates Random Number
 
 var answer = Math.floor(Math.random() * 100) + 1;
-
 console.log("answer: " + answer);
 
-// capture # of tries
-
 var tries = 0;
+var slideNumber = 0;
+var guess = 0;
 
-var slideNum = 0;
+// functions
 
-function getVal(x) {
-    return x.val();
-};
-
-function nextSlide() {
-  $(".slide").eq(slideNum).removeClass("js-show");
-  slideNum = slideNum + 1;
-  $(".slide").eq(slideNum).addClass("js-show");
-  console.log("remove class");
+function next() {
+  $(".slide").eq(slideNumber).removeClass("js-show");
+  console.log("slide # " + slideNumber);
+  slideNumber = slideNumber + 1;
+  $(".slide").eq(slideNumber).addClass("js-show");
+  console.log("slide # " + slideNumber);
 }
 
-// when button is clicked go to next slide
+// checks to see if we can move forward
 
-var slide = $(".slide").eq(slideNum);
-
-$(slide.find("button")).click(function() {
-    nextSlide();
-});
-
-function setTries() {
-  $(".js-setTries button").click(function() {
-    tries = getVal($(this).prev()); // gets value from prev input
-    console.log(tries + " tries")
-    nextSlide();
-  });
+function setTries(loc) {
+    tries = $(loc).prev().val(); // gets value from prev input
+    if (verifyNum(tries) == false) {
+      console.log(tries + " after false");
+    } else {
+      console.log(tries + " tries verified")
+      $(".try-wrap").addClass("js-show"); // turns on try amount info
+      updateTries(); // changes try amount
+      next();
+    }
 };
 
-// check to see if guess is a number
+// verify value is a number
 
-// function verifyNum(x) {
-//   if (isNaN(x) ) {
-//     $(".instruction").text('You must enter a number');
-//     setTries();
-//   } else if (x < 1 || x > 100) {
-//     $(".instruction").text('Number must be between 1 - 100');
-//     setTries();
-//   }
-// }
+function verifyNum(x) {
+  if (isNaN(x)) {
+    $(".js-show .instruction").addClass("error").text('That is not a number!');
+    return false;
+  } else if (x < 1 || x > 100) {
+    $(".js-show .instruction").addClass("error").text('Number must be between 1 - 100');
+    return false;
+  }
+};
 
+function updateTries() {
+  if (tries > 1) {
+    $(".tries").text(tries + " guesses left");
+  } else {
+    $(".tries").text(tries + " guess left");
+  }
+};
 
-setTries();
-
-    
-console.log(tries);
-
-
-
-
-// finds how far guess is from answer
-
-// var proximity = function() {
-//   var numAway = (answer - guess);
-//   if (numAway < 0) {
-//     console.log("numbers away: " + -numAway);
-//   } else {
-//     console.log("numbers away: " + numAway);
-//   }
-// };
-
-
-
-//  set up guess and start game with prompt
-
-// var guess = prompt("Take a guess");
+function usedTry() { // minus 1 try and update 
+  tries--;
+  updateTries();
+};
 
 // check guess
 
-// for (var i = 1; i < tries; i++) {
-//   // verify guess is a number
-//   verifyNum(guess);
-//   // log guess
-//   console.log("guess #" + i + ": " + guess);
-//   // log tries
-//   console.log("Number of tries left: " + (5 - i));
-//   // how many numbers away
-//   proximity();
+function checkGuess(loc) {
+  for (var i = 1; i < tries; i++) {
+    guess = Number($(loc).prev().val());
+    verifyNum(guess); // verify guess is a number
+    console.log("guess #" + i + ": " + guess);
+    console.log("Number of tries left: " + (tries - i));
+    proximity(); // how many numbers away
 
-//   if (guess == answer) {
-//     alert("correct");
-//     break;
-//   } else if (guess < answer) {
-//     guess = prompt("too low, try again");
-//   } else {
-//     guess = prompt("too high, try again");
-//   }
-// }
+    if (guess === answer) {
+      next();
+      break;
+    } else if (guess < answer) {
+      $(".js-show .instruction").addClass("error").text('Too Low');
+      usedTry();
+    } else {
+      $(".js-show .instruction").addClass("error").text('Too High');
+      usedTry();
+    } 
+  }
+};
+
+// finds how far guess is from answer
+
+var proximity = function() {
+  var numAway = (answer - guess);
+  if (numAway < 0) {
+    console.log("numbers away: " + -numAway);
+  } else {
+    console.log("numbers away: " + numAway);
+  }
+};
+
+$(".hot").addClass("hot-5");
+$(".cold").addClass("cold-5");
+
+// timeline for the game
+
+$("button").click(function(){
+  if (slideNumber === 1) {
+    setTries($(this));
+    $(".hot").removeClass("hot-5");
+    $(".cold").removeClass("cold-5");
+
+  } 
+  else if (slideNumber === 2) {
+    console.log("we are at 2!");
+    if (checkGuess($(this)) == false) {
+      console.log("false");
+    }
+  }
+  else {
+    next();
+  };
+});
+
 
 });
 

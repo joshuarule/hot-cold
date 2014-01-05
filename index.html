@@ -22,8 +22,8 @@
 
         <div class="container">
             <div class="scale">
-                <h1 class="hot hot-5">hot</h1>
-                <h1 class="cold cold-5">cold</h1>
+                <h1 class="hot">hot</h1>
+                <h1 class="cold">cold</h1>
             </div>
             <div class="prompt-box">
                 <Ul class="slides">
@@ -32,20 +32,21 @@
                         <h2 class="instruction">
                             Can you guess the number from 1 - 100?
                         </h2>
-                        <button id="start">Ok! I'm Game!</button>
+                        <button>Ok! I'm Game!</button>
                     </li>
 
                     <li class="js-setTries slide">
                         <h2 class="instruction">
-                            How many tries would you like?
+                            How many guesses would you like?
                         </h2>
-                        <input type="tel" id="triesVal" placeholder="enter tries here">
-                        <button id="triesSubmit">Let's Go!</button>
+                        <input type="tel" id="triesVal" placeholder="enter amount here">
+                        <button>Let's Go!</button>
                     </li>
 
                     <li class="slide">
                         <h2 class="instruction">Enter your guess and hit enter</h2>
                         <input type="tel" placeholder="enter guess here">
+                        <button>submit</button>
                         <br>
                         <ol class="guess-list">
                             <!-- <li class="blue-1">1</li> -->
@@ -61,7 +62,7 @@
                 </Ul>
                 <div class="container">
                     <div class="try-wrap">
-                        <span class="js-tries">10</span><span> tries left</span>
+                        <span class="tries"></span>
                     </div>
                     <a href="#" class="restart">restart x</a>
                 </div>

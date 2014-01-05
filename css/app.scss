@@ -156,7 +156,7 @@ button {
 
 .hot, .cold {
   line-height: 75px;
-  transition: all 0.7s ease-in-out;
+  transition: all .5s ease-in-out;
 }
 
 // restart
@@ -173,6 +173,7 @@ button {
 // tries 
 
 .try-wrap {
+  display: none;
   float: left;
   padding: 5px 10px;
 }
@@ -195,9 +196,17 @@ button {
   margin: auto 0;
 }
 
+// states
+
+.error {color: red;}
+
 .js-show {display: block;}
 
-// elements
+// hot cold elements
+
+.hot, .cold {
+  -webkit-transform: translate3d(0,0,0);
+}
 
 .hot {
   color: rgba($hot-color, .1);
