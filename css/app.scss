@@ -1,4 +1,6 @@
+.hide {display: none;}
 
+.float-left {float: left;}
 
   
 // font 
@@ -14,6 +16,20 @@ $base-font-size: 16px;
 $hot-color: #ffd500;
 $cold-color: #03bce1;
 
+$text-color: #444;
+
+$red-1: #ffd500;
+$red-2: darken(#ffd500, 10%);
+
+$blue-1: #03bce1;
+$blue-2: darken(#03bce1, 10%);
+
+.red-1 {color: $red-1;}
+.red-2 {color: $red-2;}
+
+.blue-1 {color: $blue-1;}
+.blue-2 {color: $blue-2;}
+
 
 @import 'helpers';
 @import 'reset';
@@ -26,6 +42,8 @@ html {
 
 body {
   @include font-main;
+  color: $text-color;
+
 }
 
 h1 {
@@ -33,18 +51,81 @@ h1 {
   margin: 0;
 }
 
+h2 {
+  font-weight: normal;
+  margin: 20px 0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ol { // previous guess container
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+  display: inline-block;
+  margin: 20px 0;
+
+  li { // previous guess
+    display: inline-block;
+    position: relative;
+    padding: 0 10px; 
+    margin-left: -4px; // adjustment for inline block
+
+    &:after { // adds border for guesses
+      content: '';
+      position: absolute;
+      width: 1px;
+      left: 0;
+      height: 100%;
+      background: rgba(#000, .1);  
+    }
+
+    &:first-of-type:after {
+      display: none; // removes border on first guess
+    }
+  }
+}
+
+
+input,
+input:active,
+input:focus{
+  border:  none;
+  outline: 0;
+  color: $text-color;
+  background: none;
+}
+
+input[type="tel"] {
+  font-size: 24px;
+  width: 260px;
+  text-align: center;
+}
+
+
+button {
+  outline: 0;
+  background: none;
+  border: 0;
+}
+
 // layout
 
 .container {
   text-align: center;
   margin: 0 auto;
-  max-width: em(600px);
-  
+  max-width: em(700px);
 }
 
+// scale container
+
 .scale {
-  height: 200px;
-  max-width: 600px; 
+  height: 150px;
+  max-width: 700px; 
   position: absolute;
   top: 0;
   bottom: 0;
@@ -55,25 +136,77 @@ h1 {
   @include o;
 }
 
+// prompt box container 
+
+.prompt-box {
+  text-align: center;
+  height: 160px;
+  width: 100%; 
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+  background: rgba(#FFF, .5);
+  border-radius: 3px;
+  box-shadow: 0 0 4px rgba(#000, .1)
+}
+
 .hot, .cold {
-  line-height: 100px;
+  line-height: 75px;
   transition: all 0.7s ease-in-out;
 }
 
+// restart
+
+.restart {
+  float: right;
+  padding: 5px 10px;
+  display: inline-block;
+  text-decoration: none;
+  color: $text-color;
+  box-sizing: border-box;
+}
+
+// tries 
+
+.try-wrap {
+  float: left;
+  padding: 5px 10px;
+}
+
+// slides
+
+.slides {
+  position: relative;
+  height: 100%;
+  margin: auto 0;
+  @include o;
+  padding: 0 20px;
+}
+
+.slide {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto 0;
+}
 
 // elements
 
 .hot {
-  color: rgba($hot-color, .05);
+  color: rgba($hot-color, .1);
 }
 
 .cold {
-  color: rgba($cold-color, .05);;
+  color: rgba($cold-color, .1);;
 }
 
 // spits out classes for multiple shadows
 
-$shadow-distance: 60px;
+$shadow-distance: 50px;
 
 @for $i from 1 through 5 {
   .hot-#{$i} {

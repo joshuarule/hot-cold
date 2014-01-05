@@ -15,7 +15,7 @@
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     </head>
-    <body class="outline">
+    <body class="xoutline">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -25,12 +25,45 @@
                 <h1 class="hot hot-5">hot</h1>
                 <h1 class="cold cold-5">cold</h1>
             </div>
-            
-            <!-- <form action="">
-                <input type="tel">
-                <input type="submit" value="enter">
-                <input type="button" value="reset">
-            </form> -->
+
+            <div class="prompt-box">
+                <Ul class="slides">
+                    <li class="slide hide">
+                        <h3>
+                            Try to guess the number from 1 - 100
+                        </h3>
+                        <button>Ok! I'm Game!</button>
+                    </li>
+                    <li class="slide hide">
+                        <h3>
+                            How many tries would you like?
+                        </h3>
+                        <input type="tel" placeholder="">
+                        <button>Let's Go!</button>
+                    </li>
+                    <li class="slide">
+                        <h2>Enter your guess and hit enter</h2>
+                        <input type="tel" placeholder="enter guess here">
+                        <br>
+                        <ol class="guess-list">
+                            <li class="blue-1">1</li>
+                        </ol>
+                    </li>
+                    <li class="slide hide">
+                        <h2>Correct!</h2>
+                    </li>
+                    <li class="slide hide">
+                        <h2>You Lose!</h2>
+                    </li>
+                </Ul>
+                <div class="container">
+                    <div class="try-wrap">
+                        <span class="js-tries">10</span><span> tries left</span>
+                    </div>
+                    <a href="#" class="restart">restart x</a>
+                </div>
+                
+            </div>
         </div>
         
         
