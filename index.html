@@ -35,7 +35,7 @@
                         <button>Ok! I'm Game!</button>
                     </li>
 
-                    <li class="js-setTries slide">
+                    <li class="slide">
                         <h2 class="instruction">
                             How many guesses would you like?
                         </h2>
@@ -48,9 +48,6 @@
                         <input type="tel" placeholder="enter guess here">
                         <button>submit</button>
                         <br>
-                        <ol class="guess-list">
-                            <!-- <li class="blue-1">1</li> -->
-                        </ol>
                     </li>
 
                     <li class="slide">
@@ -60,17 +57,16 @@
                         <h2>You Lose!</h2>
                     </li>
                 </Ul>
-                <div class="container">
+                <div class="container game-data">
                     <div class="try-wrap">
                         <span class="tries"></span>
                     </div>
+                    <ol class="guess-list"></ol>
                     <a href="#" class="restart">restart x</a>
                 </div>
                 
             </div>
         </div>
-        
-        
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
