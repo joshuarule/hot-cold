@@ -1,8 +1,9 @@
+%box-highlight {
+  border-top:     1px solid rgba(#FFF, .5);
+  border-bottom:  1px solid rgba(#000, .15);
+}
 
 
-.float-left {float: left;}
-
-  
 // font 
 
 @mixin font-main{
@@ -14,7 +15,7 @@ $base-font-size: 16px;
 // colors
 
 $hot-color: #ffd500;
-$cold-color: #03bce1;
+$cold-color: #009999;
 
 $text-color: #444;
 $red-1: #ffd500;
@@ -22,6 +23,8 @@ $red-2: darken(#ffd500, 10%);
 
 $blue-1: #03bce1;
 $blue-2: darken(#03bce1, 10%);
+
+$button-color: #99E600;
 
 .red-1 {background: $red-1;}
 .red-2 {background: $red-2;}
@@ -45,6 +48,13 @@ body {
   background-image: url(data:image/png;base64,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);
 }
 
+// layout
+.container {
+  text-align: center;
+  margin: 0 auto;
+  max-width: em(700px);
+}
+
 h1 {
   font-size: em(140px);
   margin: 0;
@@ -52,7 +62,8 @@ h1 {
 
 h2 {
   font-weight: normal;
-  margin: 20px 0;
+  margin: 10px 0;
+  padding: 10px 0;
 }
 
 ul {
@@ -83,8 +94,7 @@ ol { // previous guess container
       display: block;
       padding: 2px 7px;
       border-radius: 3px;
-      border-top:     1px solid rgba(#FFF, .5);
-      border-bottom:  1px solid rgba(#000, .15);
+      @extend %box-highlight;
     }
 
     &:first-of-type:after {
@@ -109,25 +119,38 @@ input[type="tel"] {
   text-align: center;
 }
 
+.input-wrap {
+  display: block;
+  margin-bottom: 20px;
+}
+
 
 button {
+  color: #FFF;
   outline: 0;
   background: none;
   border: 0;
+  text-shadow: 0px 1px 1px rgba(#000, .2);
+  background: $button-color;
+  padding: 10px 30px;
+  border-radius: 3px;
+  @extend %box-highlight;
+  box-shadow: 0px 3px 0 darken($button-color, 5%);
+
+  &:active {
+    box-shadow: none;
+    margin-top: 3px;
+    text-shadow: none;
+  }
 }
 
-// layout
-.container {
-  text-align: center;
-  margin: 0 auto;
-  max-width: em(700px);
-}
+
 
 // scale container
 
 .scale {
-  height: 150px;
-  max-width: 700px; 
+  height: 190px;
+  // max-width: 700px; 
   position: absolute;
   top: 0;
   bottom: 0;
@@ -143,7 +166,7 @@ button {
 
 .prompt-box {
   text-align: center;
-  height: 160px;
+  height: 190px;
   width: 100%; 
   position: absolute;
   top: 0;
@@ -153,30 +176,64 @@ button {
 
   margin: auto;
   background: rgba(#FFF, .35);
-  border-top:     1px solid rgba(#FFF, .5);
-  border-bottom:  1px solid rgba(#000, .15);
-  box-shadow: 0 0 4px rgba(#000, .1)
+  box-shadow: 0 0 4px rgba(#000, .1);
+  @extend %box-highlight;
 }
 
 .game-data { // container for restart, try amount, and guess list
   position: relative; // for aligning ol
   margin-top: 10px;
+  max-width: 700px;
+}
+
+.hot-wrap, .cold-wrap {
+  display: block;
 }
 
 .hot, .cold {
-  line-height: 75px;
+  display: inline-block;
+  line-height: 95px;
   transition: all .5s ease-in-out;
+}
+
+.transparent-1 {
+  opacity: .15;
+}
+
+.transparent-2 {
+  opacity: .05;
+}
+
+.correct {
+  margin: 0;
+  line-height: 190px;
+  font-size: 140px;
 }
 
 // restart
 
 .restart {
+  position: relative;
   float: right;
   // padding: 5px 10px;
-  display: inline-block;
+  display: block;
   text-decoration: none;
   color: $text-color;
   box-sizing: border-box;
+
+  &:hover:after {
+    position: absolute;
+    content: '';
+    display: block;
+    bottom: 0;
+    height: 2px;
+    left: 0;
+    right: 0;
+    background: $text-color;
+  }
+
+  &:active{color: lighten($text-color, 20%);}
+  &:active:after{background: lighten($text-color, 20%);}
 }
 
 // tries 
@@ -206,7 +263,28 @@ button {
 
 // states
 
-.error {color: red;}
+.error {
+  display: inline-block;
+  position: relative;
+  color: #FFF;
+  background: red;
+  padding-left: 50px;
+  padding-right: 10px;
+  border-radius: 3px;
+  @extend %box-highlight;
+
+  &:before {
+    content: '!';
+    display: inline-block;
+    position: absolute;
+    background: #fff;
+    left: 10px;
+    color: red;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+  }
+}
 
 .js-show {display: block;}
 
@@ -236,3 +314,6 @@ $shadow-distance: 52px;
     text-shadow: multiple-text-shadow($i, $cold-color, $shadow-distance, 10);
   }
 }
+
+.hide {display: none;}
+.float-left {float: left;}

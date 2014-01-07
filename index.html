@@ -22,8 +22,17 @@
 
         <div class="container">
             <div class="scale">
-                <h1 class="hot">hot</h1>
-                <h1 class="cold">cold</h1>
+                <div class="hot-wrap">
+<!--                     <h1 class="hot transparent-2">hot</h1>
+                    <h1 class="hot transparent-1">hot</h1> -->
+                    <h1 class="hot">hot</h1>
+                  <!--   <h1 class="hot transparent-1">hot</h1>
+                    <h1 class="hot transparent-2">hot</h1> -->
+                </div>
+                <div class="cold-wrap">
+                    <h1 class="cold">cold</h1>
+                </div>
+                
             </div>
             <div class="prompt-box">
                 <Ul class="slides">
@@ -32,26 +41,31 @@
                         <h2 class="instruction">
                             Can you guess the number from 1 - 100?
                         </h2>
-                        <button>Ok! I'm Game!</button>
+                        <button>Start</button>
                     </li>
 
                     <li class="slide">
                         <h2 class="instruction">
                             How many guesses would you like?
                         </h2>
-                        <input type="tel" id="triesVal" placeholder="enter amount here">
+                        <div class="input-wrap">
+                          <input type="tel" id="triesVal" placeholder="enter amount here">  
+                        </div>
+                        
                         <button>Let's Go!</button>
                     </li>
 
                     <li class="slide">
-                        <h2 class="instruction">Enter your guess and hit enter</h2>
-                        <input type="tel" placeholder="enter guess here">
+                        <h2 class="instruction">Enter your guess</h2>
+                        <div class="input-wrap">
+                            <input type="tel" placeholder="enter guess here">
+                        </div>
                         <button>submit</button>
                         <br>
                     </li>
 
                     <li class="slide">
-                        <h2>Correct!</h2>
+                        <h2 class="correct">You Win!</h2>
                     </li>
                     <li class="slide">
                         <h2>You Lose!</h2>
@@ -62,9 +76,14 @@
                         <span class="tries"></span>
                     </div>
                     <ol class="guess-list"></ol>
-                    <a href="#" class="restart">restart x</a>
+                    <a href="#" class="restart">restart</a>
                 </div>
-                
+                <div class="error-wrap error-1 hide">
+                    <h2 class="error">That is not a number!</h2>
+                </div>
+                <div class="error-wrap error-2 hide">
+                    <h2 class="error">Number must be between 1 - 100</h2>
+                </div>
             </div>
         </div>
 
