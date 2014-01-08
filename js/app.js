@@ -92,7 +92,7 @@ $(document).ready(function(){
 
     function next() {
       currentSlide().removeClass("js-show");
-      slideNumber++;
+      slideNumber += 1;
       currentSlide().addClass("js-show");
       selectInput();
       console.log("slide # " + slideNumber);
@@ -191,13 +191,13 @@ $(document).ready(function(){
       // resets after error
       $(".js-show .instruction").removeClass("error"); 
       
+
       if (guess) { // if guess is verified
         updateGuess(guess);
         usedTry();
       }
       
       if (tries === 0) { // if you run out of tries
-        usedTry();
         next();
         next();
       } 
