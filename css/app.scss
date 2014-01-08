@@ -311,7 +311,7 @@ $shadow-distance: 52px;
   .blue-1  {background: $color2;}
   @for $i from 2 through $n {
     .red-#{$i}   {background: adjust-hue($color1, ($i * -$hue-adjust))};
-    .blue-#{$i}  {background: adjust-hue($color1, ($i * $hue-adjust))};
+    .blue-#{$i}  {background: adjust-hue($color2, ($i * $hue-adjust))};
   }
 }
 
