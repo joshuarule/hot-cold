@@ -8,30 +8,47 @@ var initialize = function() {
   var answer = Math.floor(Math.random() * 100) + 1;
   console.log("answer: " + answer);
 
+  // set tries
+
   var tries = 0;
   updateTries();
   $(".try-wrap span").text('');
 
+  // set intial slide #
+
   var slideNumber = 0;
   console.log("slide number #: " + slideNumber);
 
+  // set guess
+
   var guess = 0;
+
+  // shows first slide
 
   $(".slide").removeClass("js-show");
   $(".slide").eq(0).addClass("js-show");
 
+  // animates the scale on first load
+
   $(".hot").addClass("hot-5");
   $(".cold").addClass("cold-5");
 
-  $(".guess-list").html("");
-  
+  // clears guess list
 
+  $(".guess-list").html("");
+
+
+  //
+  //
   // functions
+  //
+  //
 
   // verify value is a number
 
   function verifyNum(x) {
 
+    // clones the error states 
     error1= $(".error-1").clone();
     error2= $(".error-2").clone();;
     
@@ -61,16 +78,36 @@ var initialize = function() {
     return currentSlide().find("input").val();
   }
 
+  // selects input on current slide
+
+  function selectInput() {
+    currentSlide().find("input").focus(function(){
+      $(this).select();
+    });
+  }
+
   // moves to next slide
 
   function next() {
     currentSlide().removeClass("js-show");
     slideNumber++;
     currentSlide().addClass("js-show");
+    selectInput();
     console.log("slide # " + slideNumber);
   }
 
-  // returns the current slide
+  // Updates tries
+
+  function updateTries() {
+    if (tries > 1 || tries === 0) {
+      $(".tries").text(tries + " tries left");
+    } else {
+      $(".tries").text(tries + " try left");
+    }
+    console.log("Number of tries left: " + (tries));
+  };
+
+  // set tries
 
   function setTries() {
       tries = inputVal(); // gets value input
@@ -84,93 +121,12 @@ var initialize = function() {
       }
   };
 
-  // checks to see if we can move forward
-
-  function updateTries() {
-    if (tries > 1 || tries === 0) {
-      $(".tries").text(tries + " tries left");
-    } else {
-      $(".tries").text(tries + " try left");
-    }
-    console.log("Number of tries left: " + (tries));
-  };
-
   function usedTry() { // minus 1 try and update
     tries--;
     updateTries();
   };
 
-  // check guess
-
-  function checkGuess() {
-    guess = inputVal(); // get guess from input
-    guess = verifyNum(guess);
-
-    
-    if (guess) {
-       // how many numbers away from answer
-
-        $(".js-show .instruction").removeClass("error"); // resets after error
-
-        if (tries > 1) {
-
-          // resets
-          $(".hot").attr('class', 'hot');    // resets hot classes
-          $(".cold").attr('class', 'cold');  // resets cold classes
-
-          x = proximity(guess);
-          console.log("proximity " + x);
-
-          if (guess === answer) { // correct answer
-            usedTry();
-            $(".hot").addClass("hot-5");
-            $(".guess-list").append("<li><span class='red-2'>" + guess + "</span></li>");
-            next();
-          } else if (x < 10) {
-            $(".js-show .instruction").text("Hot! Like Hansel!");
-            $(".hot").addClass("hot-5");
-            $(".guess-list").append("<li><span class='red-2'>" + guess + "</span></li>");
-            usedTry();
-          } else if (x >= 10 && x < 20) {
-            $(".js-show .instruction").text("It\'s really heating up!");
-            $(".hot").addClass("hot-4");
-            $(".guess-list").append("<li><span class='red-1'>" + guess + "</span></li>");
-            usedTry();
-          } else if (x >= 20 && x < 30) {
-            $(".js-show .instruction").text("Warm 106.9");
-            $(".hot").addClass("hot-3");
-            $(".guess-list").append("<li><span class=''>" + guess + "</span></li>");
-            usedTry();
-          } else if (x >= 30 && x < 40) {
-            $(".js-show .instruction").text("A light jacket maybe?");
-            $(".hot").addClass("hot-2");
-            $(".cold").addClass("cold-2");
-            $(".guess-list").append("<li><span class='blue-1'>" + guess + "</span></li>");
-            usedTry();
-          } else if (x >= 40 && x < 50) {
-            $(".js-show .instruction").text("Someone forgot their long johns");
-            $(".cold").addClass("cold-4");
-            $(".guess-list").append("<li><span class='blue-2'>" + guess + "</span></li>");
-            usedTry();
-          } else {
-            console.log("bang");
-            $(".js-show .instruction").text("Colder than Ice!!");
-            $(".cold").addClass("cold-5");
-            $(".guess-list").append("<li><span class='blue-2'>" + guess + "</span></li>");
-            usedTry();
-          } 
-        }
-
-        else {
-          usedTry();
-          next();
-          next();
-        } 
-    }
-    
-  };
-
-  // finds how far guess is from answer
+  // proximity() finds how far guess is from answer
 
   function proximity() {
     var numAway = (answer - guess);
@@ -181,6 +137,76 @@ var initialize = function() {
       console.log("numbers away: " + numAway);
     } 
     return numAway;
+  };
+
+  // check guess
+
+  function checkGuess() {
+    guess = inputVal(); // get guess from input
+    guess = verifyNum(guess);
+
+    
+    if (guess) {
+
+        // resets after error
+        $(".js-show .instruction").removeClass("error"); 
+
+        if (tries > 1) {
+
+          // resets the hot cold scale
+          $(".hot").attr('class', 'hot');    
+          $(".cold").attr('class', 'cold'); 
+
+          // find the proximity of the guess to the answer
+          x = proximity(guess);
+
+          if (guess === answer) { // correct answer
+            usedTry();
+            $(".hot").addClass("hot-5");
+            $(".guess-list").append("<li><span class='red-5'>" + guess + "</span></li>");
+            next();
+          } else if (x < 10) {
+            $(".js-show .instruction").text("Hot! Like Hansel!");
+            $(".hot").addClass("hot-4");
+            $(".guess-list").append("<li><span class='red-3'>" + guess + "</span></li>");
+            usedTry();
+          } else if (x >= 10 && x < 20) {
+            $(".js-show .instruction").text("Warm 106.9");
+            $(".hot").addClass("hot-3");
+            $(".guess-list").append("<li><span class='red-1'>" + guess + "</span></li>");
+            usedTry();
+          } else if (x >= 20 && x < 30) {
+            $(".js-show .instruction").text("Not Hot. Not Cold");
+            $(".hot").addClass("hot-2");
+            $(".cold").addClass("cold-2");
+            $(".guess-list").append("<li><span class='grey'>" + guess + "</span></li>");
+            usedTry();
+          } else if (x >= 30 && x < 40) {
+            $(".js-show .instruction").text("A light jacket maybe?");
+            $(".cold").addClass("cold-3");
+            $(".guess-list").append("<li><span class='blue-1'>" + guess + "</span></li>");
+            usedTry();
+          } else if (x >= 40 && x < 50) {
+            $(".js-show .instruction").text("Someone forgot their long johns");
+            $(".cold").addClass("cold-4");
+            $(".guess-list").append("<li><span class='blue-3'>" + guess + "</span></li>");
+            usedTry();
+          } else {
+            console.log("bang");
+            $(".js-show .instruction").text("Colder than Ice!!");
+            $(".cold").addClass("cold-5");
+            $(".guess-list").append("<li><span class='blue-5'>" + guess + "</span></li>");
+            usedTry();
+          } 
+        }
+
+        else { // ran out of tries
+          usedTry();
+          next();
+          next();
+        } 
+    }
+    
   };
 
   // timeline for the game

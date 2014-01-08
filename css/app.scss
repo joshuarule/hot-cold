@@ -18,19 +18,8 @@ $hot-color: #ffd500;
 $cold-color: #009999;
 
 $text-color: #444;
-$red-1: #ffd500;
-$red-2: darken(#ffd500, 10%);
-
-$blue-1: #03bce1;
-$blue-2: darken(#03bce1, 10%);
 
 $button-color: #99E600;
-
-.red-1 {background: $red-1;}
-.red-2 {background: $red-2;}
-
-.blue-1 {background: $blue-1;}
-.blue-2 {background: $blue-2;}
 
 
 @import 'helpers';
@@ -204,7 +193,7 @@ button {
   opacity: .05;
 }
 
-.correct {
+.correct, .lose {
   margin: 0;
   line-height: 190px;
   font-size: 140px;
@@ -314,6 +303,23 @@ $shadow-distance: 52px;
     text-shadow: multiple-text-shadow($i, $cold-color, $shadow-distance, 10);
   }
 }
+
+// creates colors for guess list
+
+@mixin createHues ($n, $hue-adjust, $color1, $color2) {
+  .red-1  {background: $color1;}
+  .blue-1  {background: $color2;}
+  @for $i from 2 through $n {
+    .red-#{$i}   {background: adjust-hue($color1, ($i * -$hue-adjust))};
+    .blue-#{$i}  {background: adjust-hue($color1, ($i * $hue-adjust))};
+  }
+}
+
+@include createHues(5, 10, $hot-color, $cold-color);
+
+.grey {background: #CCC;}
+
+// extras
 
 .hide {display: none;}
 .float-left {float: left;}

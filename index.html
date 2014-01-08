@@ -22,20 +22,20 @@
 
         <div class="container">
             <div class="scale">
+
+                <!-- Hot / Cold Graphics -->
+
                 <div class="hot-wrap">
-<!--                     <h1 class="hot transparent-2">hot</h1>
-                    <h1 class="hot transparent-1">hot</h1> -->
                     <h1 class="hot">hot</h1>
-                  <!--   <h1 class="hot transparent-1">hot</h1>
-                    <h1 class="hot transparent-2">hot</h1> -->
                 </div>
                 <div class="cold-wrap">
                     <h1 class="cold">cold</h1>
                 </div>
-                
             </div>
             <div class="prompt-box">
                 <Ul class="slides">
+
+                    <!-- Intro slide -->
 
                     <li class="slide js-show">
                         <h2 class="instruction">
@@ -43,6 +43,8 @@
                         </h2>
                         <button>Start</button>
                     </li>
+
+                    <!-- Set Guess slide -->
 
                     <li class="slide">
                         <h2 class="instruction">
@@ -55,6 +57,8 @@
                         <button>Let's Go!</button>
                     </li>
 
+                    <!-- Guessing slide -->
+
                     <li class="slide">
                         <h2 class="instruction">Enter your guess</h2>
                         <div class="input-wrap">
@@ -64,13 +68,21 @@
                         <br>
                     </li>
 
+                    <!-- win slide -->
+
                     <li class="slide">
                         <h2 class="correct">You Win!</h2>
                     </li>
+
+                    <!-- lose slide -->
+
                     <li class="slide">
-                        <h2>You Lose!</h2>
+                        <h2 class="lost">You Lose!</h2>
                     </li>
                 </Ul>
+
+                <!-- game info at the bottom -->
+
                 <div class="container game-data">
                     <div class="try-wrap">
                         <span class="tries"></span>
@@ -78,6 +90,9 @@
                     <ol class="guess-list"></ol>
                     <a href="#" class="restart">restart</a>
                 </div>
+
+                <!-- Errors -->
+
                 <div class="error-wrap error-1 hide">
                     <h2 class="error">That is not a number!</h2>
                 </div>
