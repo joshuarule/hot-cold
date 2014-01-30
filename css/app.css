@@ -511,6 +511,14 @@ button {
   right: 0;
   margin: auto 0; }
 
+.error-wrap {
+  display: none;
+  position: relative;
+  transition: opacity .3s; }
+
+.hide {
+  display: none; }
+
 .error {
   display: inline-block;
   position: relative;
@@ -575,37 +583,39 @@ button {
   background: #ffd500; }
 
 .blue-1 {
-  background: #009999; }
+  background: #009999;
+  color: #fff; }
 
 .red-2 {
   background: #ff8000; }
 
 .blue-2 {
-  background: #006699; }
+  background: #006699;
+  color: #fff; }
 
 .red-3 {
   background: #ff5600; }
 
 .blue-3 {
-  background: #004c99; }
+  background: #004c99;
+  color: #fff; }
 
 .red-4 {
   background: #ff2b00; }
 
 .blue-4 {
-  background: #003399; }
+  background: #003399;
+  color: #fff; }
 
 .red-5 {
   background: red; }
 
 .blue-5 {
-  background: #001a99; }
+  background: #001a99;
+  color: #fff; }
 
 .grey {
   background: #CCC; }
-
-.hide {
-  display: none; }
 
 .float-left {
   float: left; }

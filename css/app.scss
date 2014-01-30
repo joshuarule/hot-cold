@@ -254,6 +254,19 @@ button {
 
 // states
 
+.error-wrap {
+  display: none;
+  position: relative;
+  // opacity: 1;
+  // -webkit-opacity: 1;
+  // -webkit-transition:opacity .3s;
+  transition:opacity .3s;
+}
+
+.hide {
+  display: none;
+}
+
 .error {
   display: inline-block;
   position: relative;
@@ -262,6 +275,8 @@ button {
   padding-left: 50px;
   padding-right: 10px;
   border-radius: 3px;
+
+  
   // @extend %box-highlight;
 
   &:before {
@@ -311,10 +326,10 @@ $shadow-distance: 52px;
 
 @mixin createHues ($n, $hue-adjust, $color1, $color2) {
   .red-1  {background: $color1;}
-  .blue-1  {background: $color2;}
+  .blue-1  {background: $color2; color: #fff;}
   @for $i from 2 through $n {
     .red-#{$i}   {background: adjust-hue($color1, ($i * -$hue-adjust))};
-    .blue-#{$i}  {background: adjust-hue($color2, ($i * $hue-adjust))};
+    .blue-#{$i}  {background: adjust-hue($color2, ($i * $hue-adjust)); color: #fff;};
   }
 }
 
@@ -324,5 +339,5 @@ $shadow-distance: 52px;
 
 // extras
 
-.hide {display: none;}
+// 
 .float-left {float: left;}

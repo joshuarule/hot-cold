@@ -8,8 +8,8 @@ $(document).ready(function(){
     tries = 0;
     slideNumber = 0;
     guess = 0;
-    error1 = $(".error-1");
-    error2 = $(".error-2");
+    error1 = $(".error-1").clone();
+    error2 = $(".error-2").clone();
     slideStart = currentSlide().find(".instruction");
 
     // sets up tries
@@ -200,7 +200,6 @@ $(document).ready(function(){
     if (guess === answer) { // correct answer *fix
       $(".hot").addClass("hot-5");
       $(".guess-list").append("<li><span class='red-5'>" + guess + "</span></li>");
-      // next();
     } else if (x < 10) {
       $(".js-show .instruction h2").text("Hot! Like Hansel!");
       $(".hot").addClass("hot-4");
