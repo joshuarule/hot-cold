@@ -22,6 +22,8 @@ $(document).ready(function(){
     $(".slide").removeClass("js-show");
     $(".slide").eq(0).addClass("js-show");
 
+    $("#start").focus();
+
     // animates the scale on first load
 
     $(".hot").addClass("hot-5");
@@ -228,9 +230,7 @@ $(document).ready(function(){
     } 
   }
 
-  // timeline for the game
-
-  $("button").click(function(){
+  var slideChecker = function(){
     if (slideNumber === 0) {
       next();
       console.log("start button");
@@ -246,7 +246,18 @@ $(document).ready(function(){
     else {
       next();
     };
-  }); 
+  };
+
+  // timeline for the game
+
+  $("button").click(slideChecker);
+
+  $(".input").keypress(function(e){
+    console.log(e.which);
+    if (e.which === 13) {
+      slideChecker();
+    }
+  });
 
   $(".restart").click(function(){
     resetSlide();
