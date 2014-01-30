@@ -17,6 +17,8 @@ $base-font-size: 16px;
 $hot-color: #ffd500;
 $cold-color: #009999;
 
+$red: #D92C0C;
+
 $text-color: #444;
 
 $button-color: #99E600;
@@ -255,23 +257,24 @@ button {
 .error {
   display: inline-block;
   position: relative;
-  color: #FFF;
-  background: red;
+  color: $red;
+  background: rgba($red,.1);
   padding-left: 50px;
   padding-right: 10px;
   border-radius: 3px;
-  @extend %box-highlight;
+  // @extend %box-highlight;
 
   &:before {
     content: '!';
     display: inline-block;
     position: absolute;
-    background: #fff;
+    color: $red;
+    background: rgba($red, .2);
     left: 10px;
-    color: red;
+    // color: transparent;
     width: 30px;
     height: 30px;
-    border-radius: 15px;
+    // border-radius: 15px;
   }
 }
 
