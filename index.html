@@ -33,81 +33,98 @@
                 </div>
             </div>
             <div class="prompt-box">
+                <div class="container game-data">
+                    <div class="try-wrap">
+                        <span class="tries"></span>
+                    </div>
+                    <a href="#" class="restart">restart</a>
+                </div>
                 <Ul class="slides">
 
                     <!-- Intro slide -->
-
+                    
                     <li class="slide js-show">
-                        <div class="instruction">
-                            <h2>
-                                Can you guess the number from 1 - 100?
-                            </h2>
+                        <div class="vcontainer">
+                            <div class="vwrap">
+                                <div class="instruction">
+                                    <h2>
+                                        Can you guess the number from 1 - 100?
+                                    </h2>
+                                </div>
+                                
+                                <button id="start">start</button>
+                            </div>
+                            
                         </div>
                         
-                        <button id="start">Start</button>
                     </li>
 
                     <!-- Set Guess slide -->
 
                     <li class="slide">
-                        <div class="instruction">
-                           <h2>
-                                How many guesses would you like?
-                            </h2>
+                        <div class="vcontainer">
+                            <div class="vwrap">
+                                <div class="instruction">
+                                   <h2>
+                                        How many guesses would you like?
+                                    </h2>
+                                </div>
+                                <div class="input-wrap">
+                                  <input type="tel" class="input" placeholder="enter amount here">  
+                                </div>
+                                
+                                <button>submit</button>
+                            </div>
                         </div>
-                        <div class="input-wrap">
-                          <input type="tel" class="input" placeholder="enter amount here">  
-                        </div>
-                        
-                        <button>Let's Go!</button>
                     </li>
 
                     <!-- Guessing slide -->
 
                     <li class="slide">
-                        <div class="instruction">
-                            <h2>Enter your guess
-                            </h2>
+                        <div class="vcontainer">
+                            <div class="vwrap">
+                                <div class="instruction">
+                                    <h2>Enter your guess
+                                    </h2>
+                                </div>
+                                
+                                <div class="input-wrap">
+                                    <input type="tel" class="input" placeholder="enter guess here">
+                                </div>
+                                <button>submit</button>
+                            </div>
                         </div>
-                        
-                        <div class="input-wrap">
-                            <input type="tel" class="input" placeholder="enter guess here">
-                        </div>
-                        <button>submit</button>
-                        <br>
                     </li>
 
                     <!-- win slide -->
 
                     <li class="slide">
-                        <h2 class="correct">You Win!</h2>
+                        <div class="vcontainer">
+                            <div class="vwrap">
+                                <h2 class="correct">You Win!</h2>
+                            </div>
+                        </div>
                     </li>
 
                     <!-- lose slide -->
 
                     <li class="slide">
-                        <h2 class="lose">You Lose!</h2>
+                        <div class="vcontainer">
+                            <div class="vwrap">
+                                <h2 class="lose">You Lose!</h2>
+                            </div>
+                        </div>
                     </li>
                 </Ul>
 
                 <!-- game info at the bottom -->
 
-                <div class="container game-data">
-                    <div class="try-wrap">
-                        <span class="tries"></span>
-                    </div>
-                    <ol class="guess-list"></ol>
-                    <a href="#" class="restart">restart</a>
+                <div class="container">
+                   <ol class="guess-list">
+                       
+                   </ol> 
                 </div>
 
-                <!-- Errors -->
-
-                <div class="instruction error-wrap error-1">
-                    <h2 class="error">That is not a number!</h2>
-                </div>
-                <div class="instruction error-wrap error-2">
-                    <h2 class="error">Number must be between 1 - 100</h2>
-                </div>
             </div>
         </div>
 
