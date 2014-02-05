@@ -534,7 +534,6 @@ button {
   display: inline-block;
   position: relative;
   color: #d92c0c;
-  background: rgba(217, 44, 12, 0.1);
   padding-left: 50px;
   padding-right: 10px;
   border-radius: 3px; }
@@ -547,6 +546,15 @@ button {
     left: 10px;
     width: 30px;
     height: 30px; }
+  .error:after {
+    position: absolute;
+    display: block;
+    content: '';
+    background: rgba(217, 44, 12, 0.1);
+    top: -10px;
+    bottom: -10px;
+    left: 0;
+    right: 0; }
 
 .hot, .cold {
   -webkit-transform: translate3d(0, 0, 0); }

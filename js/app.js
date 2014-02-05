@@ -109,7 +109,7 @@ $(document).ready(function(){
       selectInput();
       return false;
     } else if (x < 1 || x > 100) {
-      $(".js-show .instruction h2").html("That is not a number");
+      $(".js-show .instruction h2").html("Number must be between 1 - 100");
       $(".js-show .instruction h2").addClass("error");
       selectInput();
       return false;

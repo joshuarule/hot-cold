@@ -279,7 +279,6 @@ button {
   display: inline-block;
   position: relative;
   color: $red;
-  background: rgba($red,.1);
   padding-left: 50px;
   padding-right: 10px;
   border-radius: 3px;
@@ -293,7 +292,17 @@ button {
     left: 10px;
     width: 30px;
     height: 30px;
+  }
 
+  &:after {
+    position: absolute;
+    display: block;
+    content: '';
+    background: rgba($red,.1);
+    top:    -10px;
+    bottom: -10px;
+    left:   0;
+    right:  0;
   }
 }
 
